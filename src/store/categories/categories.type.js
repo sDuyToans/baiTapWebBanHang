@@ -1,0 +1,3 @@
+export const CATEGORIES_ACTION_TYPES = {
+    FETCH_CATEGORIES : 'categories/FETCH_CATEGORIES'
+}
