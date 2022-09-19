@@ -22,6 +22,15 @@ const Navigation = () => {
                             <li className="nav-item">
                                 <NavLink className="nav-link active" aria-current="page" to=''>Home</NavLink>
                             </li>
+                            <li className="nav-item">
+                                <NavLink className="nav-link" aria-current="page" to='/danhsachsanpham'>Danh sách sản phẩm</NavLink>
+                            </li>
+                            <li className="nav-item">
+                                <NavLink className="nav-link" aria-current="page" to='/add'>Thêm sản phẩm mới</NavLink>
+                            </li>
+                            <li className="nav-item">
+                                <NavLink className="nav-link" aria-current="page" to='/mycart'>Sản phẩm của tôi</NavLink>
+                            </li>
                         </ul>
                     </div>
                     <CartIcon/>

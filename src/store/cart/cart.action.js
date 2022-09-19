@@ -1,4 +1,5 @@
 import { createAction } from '../../utils/Reducer/Reducer.utils'
+import { CATEGORIES_ACTION_TYPES } from '../categories/categories.type';
 import { CART_ACTION_TYPES } from './cart.type';
 
 export const addItem = (cartItems, productToAdd) => {
@@ -22,3 +23,9 @@ export const addItemToCart = (cartItems, itemToAdd) => {
 }
 
 export const setIsCartOpen = boolean => createAction(CART_ACTION_TYPES.SELECT_IS_CART_OPEN, boolean);
+
+export const onCheckOutStart = (cartItems) => createAction(CART_ACTION_TYPES.ON_CHECHOUT_START, cartItems);
+
+export const onCheckOutSuccess = (cartItems) => createAction(CART_ACTION_TYPES.ON_CHECHOUT_SUCCESS, cartItems) ;
+
+export const onCheckOutFailed = (error) => createAction(CATEGORIES_ACTION_TYPES.ADD_PRODUCT_FAILED, error);

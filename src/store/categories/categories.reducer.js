@@ -23,13 +23,13 @@ const initialState = {
             tax: 6000
         },
     ],
-    error: null
 }
 
 export const categoriesReducer = (state = initialState, action = {}) => {
     const { type, payload } = action;
     switch (type) {
-        
+        case CATEGORIES_ACTION_TYPES.ADD_PRODUCT_SUCCESS: 
+            return { ...state, productCategories: payload}
         default:
             return state;
     }

@@ -1,0 +1,24 @@
+.danh-sach-san-pham{
+    display: flex;
+    gap: 30px;
+    .categories-sp{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        .categories-container-sanpham{
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+    }
+    .cart-items-sp{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        .cart-items-container-sanpham{
+            display: grid;
+            grid-template-columns: repeat((2, 1fr));
+            gap: 20px;
+        }
+    }
+}

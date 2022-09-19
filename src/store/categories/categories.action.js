@@ -1,8 +1,8 @@
-import { createAction } from '../../utils/Reducer';
+import { createAction } from '../../utils/Reducer/Reducer.utils';
 import { CATEGORIES_ACTION_TYPES } from './categories.type';
 
-export const fetchCategoriesStart = () => createAction(CATEGORIES_ACTION_TYPES.FETCH_CATGORIES_START);
+export const addingProductStart = (productToAdd) => createAction(CATEGORIES_ACTION_TYPES.ADD_PRODUCT_START, productToAdd);
 
-export const fetchCategoriesSuccess = (categories) => createAction(CATEGORIES_ACTION_TYPES.FETCH_CATGORIES_SUCCESS, categories);
+export const addingProductSuccess = (categories) => createAction(CATEGORIES_ACTION_TYPES.ADD_PRODUCT_SUCCESS, categories);
 
-export const fetchCategoriesFailed = (error) => createAction(CATEGORIES_ACTION_TYPES.FETCH_CATEGORIES_FAILED, error);
+export const addingProductFailed = (error) => createAction(CATEGORIES_ACTION_TYPES.ADD_PRODUCT_FAILED, error);
