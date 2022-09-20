@@ -37,6 +37,9 @@ const Navigation = () => {
                             <li className="nav-item">
                                 <NavLink className="nav-link" aria-current="page" to='/dongDonHangDonHang'>Chi tiết các đơn hàng</NavLink>
                             </li>
+                            <li className="nav-item">
+                                <NavLink className="nav-link text-danger" aria-current="page" to='/baocao'>Báo Cáo</NavLink>
+                            </li>
                         </ul>
                     </div>
                     <CartIcon/>
