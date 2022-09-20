@@ -1,8 +1,8 @@
 import { useSelector } from 'react-redux';
-import { selectCartItems } from '../../store/cart/cart.selector';
-import { selectProductCategories } from '../../store/categories/categories.selector';
+import { selectCartItems } from '../../model/cart/cart.selector';
+import { selectProductCategories } from '../../model/categories/categories.selector';
 import './danhSachSanPham.scss';
-import Directory from '../../components/Directory/Directory';
+import Directory from '../../views/Directory/Directory';
 const DanhSachSanPham = () => {
     const cartItems = useSelector(selectCartItems);
     const categories = useSelector(selectProductCategories);

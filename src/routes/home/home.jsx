@@ -1,8 +1,8 @@
 import './home.scss';
 
-import Directory from '../../components/Directory/Directory';
+import Directory from '../../views/Directory/Directory';
 import { useSelector } from 'react-redux';
-import { selectProductCategories } from '../../store/categories/categories.selector';
+import { selectProductCategories } from '../../model/categories/categories.selector';
 const Home = () => {
     const DataProduct = useSelector(selectProductCategories);
     return(

@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { onCheckOutStart } from '../../store/cart/cart.action';
-import { selectCartItems } from '../../store/cart/cart.selector';
+import { onCheckOutStart } from '../../model/cart/cart.action';
+import { selectCartItems } from '../../model/cart/cart.selector';
 import './myCart.scss';
 
 const MyCart = () => {
