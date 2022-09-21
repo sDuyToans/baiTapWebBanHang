@@ -12,7 +12,7 @@ const Navigation = () => {
             <nav className="navbar navbar-expand-lg bg-light">
                 <div className="container-fluid">
                     <NavLink className="navbar-brand" to='/'>
-                        <img src="https://tomahosoft.com/wp-content/uploads/2021/09/LOGO-TOMAHO-FINAL-1.png" alt="..." className='nav-logo'/>
+                        <img src="https://tomahosoft.com/wp-content/uploads/2021/09/LOGO-TOMAHO-FINAL-1.png" alt="..." className='nav-logo' />
                     </NavLink>
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon"></span>
@@ -37,10 +37,12 @@ const Navigation = () => {
                             <li className="nav-item">
                                 <NavLink className="nav-link text-danger" aria-current="page" to='/baocao'>Báo Cáo</NavLink>
                             </li>
+                            <li className="nav-item">
+                                <CartIcon />
+                                {isCartOpen && <CartDropDown />}
+                            </li>
                         </ul>
                     </div>
-                    <CartIcon/>
-                    { isCartOpen && <CartDropDown/>}
                 </div>
             </nav>
             <Outlet />
