@@ -6,3 +6,8 @@ export const selectDonHang = createSelector(
     [selectDonHangReducer],
     slice => slice.donHang
 )
+
+export const selectDonHangId = createSelector(
+    [selectDonHangReducer],
+    slice => slice.donHangId
+)

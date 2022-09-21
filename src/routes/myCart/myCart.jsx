@@ -1,13 +1,28 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { onCheckOutStart } from '../../model/cart/cart.action';
 import { selectCartItems } from '../../model/cart/cart.selector';
+import uuid from 'react-uuid';
+
 import './myCart.scss';
+import { selectProductCategories } from '../../model/categories/categories.selector';
 
 const MyCart = () => {
+    const categories = useSelector(selectProductCategories)
+    const arrCartItesm = () => {
+        const newArr = [];
+        for (let item of cartItems) {
+            newArr.push(categories.find(p => p.id === item.id))
+        }
+        for( let i = 0; i < newArr.length; i++ ) {
+            const quantity = cartItems[i].quantity
+            newArr[i] = {...newArr[i], quantity}
+        }
+        return newArr;
+};
     const dispatch = useDispatch();
     const cartItems = useSelector(selectCartItems);
-    const renderProduct = () => {
-        return cartItems?.map((item, index) => {
+    const renderProduct = (cartArray) => {
+        return cartArray?.map((item, index) => {
             return (
                 <tr key={index} className='tr-tbody'>
                     <td className='img-td'>
@@ -24,10 +39,11 @@ const MyCart = () => {
             )
         })
     }
-    
+
     const handleSubmit = (event) => {
         event.preventDefault();
-        dispatch(onCheckOutStart(cartItems));
+        const id = uuid();
+        dispatch(onCheckOutStart(arrCartItesm(), id));
     };
     return (
         <form className='mycart-container container mt-5' onSubmit={handleSubmit}>
@@ -47,13 +63,19 @@ const MyCart = () => {
                         </tr>
                     </thead>
                     <tbody className='tbody'>
-                        {renderProduct()}
+                        {renderProduct(arrCartItesm())}
                     </tbody>
                 </table>
             </div>
-            <div className='btn-thanhtoan'>
-                <button className="btn btn-success ">Thanh Toán</button>
-            </div>
+            {
+                !cartItems.length
+                    ?
+                    <p>Notthing here</p>
+                    :
+                    <div className='btn-thanhtoan'>
+                        <button className="btn btn-success ">Thanh Toán</button>
+                    </div>
+            }
         </form>
     )
 };

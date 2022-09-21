@@ -7,11 +7,8 @@ export const donHangReducer = (state = inititalState , action = {}) => {
     const { type, payload } = action;
     switch (type)  {
         case CART_ACTION_TYPES.UPDATE_ON_CHECHOUT_SUCCESS:
-            const newDonHang = [...state.donHang, ...payload.newDonHang];
-            return {
-                ...state, 
-                donHang: newDonHang
-            }
+            const newArrDonHang = [...state.donHang, {...payload.newDonHang}]
+            return {...state, donHang: newArrDonHang}
         default: 
             return state;
     }

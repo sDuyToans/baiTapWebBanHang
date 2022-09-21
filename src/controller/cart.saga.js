@@ -1,50 +1,49 @@
-import { call, put , all, takeLeading} from 'redux-saga/effects';
+import { call, put, all, takeLeading, select } from 'redux-saga/effects';
 import { onCheckOutFailed, onCheckOutSuccess } from '../model/cart/cart.action';
 import { CART_ACTION_TYPES } from '../model/cart/cart.type';
 
 
-export function* donHangHandle(cartItems){
+export function* donHangHandle(cartItems, id) {
     try {
-        const newDonHang = [];
+        let newPhanTu = {
+            id: '',
+            name: '',
+            tongtruocthue: 0,
+            tongthue: 0,
+            tongtien: 0
+        };
+        newPhanTu.id = id;
+        newPhanTu.name = `Đơn hàng ${id}`;
         cartItems.map(item => {
-            const newPhanTu = {
-                id: '',
-                name: '',
-                tongtruocthue: 0,
-                tongthue: 0,
-                tongtien: 0
-            };
-            newPhanTu.id = item.id;
-            newPhanTu.name = item.name;
-            newPhanTu.tongtruocthue = item.quantity * item.price;
-            newPhanTu.tongthue = item.quantity * item.tax;
-            newPhanTu.tongtien = item.quantity * item.price + item.quantity * item.tax;
-            newDonHang.push({...newPhanTu});
-            return newDonHang;
+            newPhanTu.tongtruocthue += item.quantity * item.price;
+            newPhanTu.tongthue += item.quantity * item.tax;
+            newPhanTu.tongtien += item.quantity * item.price + item.quantity * item.tax;
         })
-        return newDonHang;
+        return newPhanTu;
     } catch (error) {
         yield put(onCheckOutFailed(error));
     }
 }
 
-export function* dongDonHangHandle(cartItems){
+export function* dongDonHangHandle(cartItems, id) {
     const newDongDonHang = [];
     try {
         cartItems.map(item => {
             const newPhanTu = {
                 id: '',
+                idSP: '',
                 quantity: '',
                 price: '',
                 tongtientruocthue: 0,
                 tongtienthue: 0
             };
-            newPhanTu.id = item.id;
+            newPhanTu.id = id;
+            newPhanTu.idSP = item.id;
             newPhanTu.quantity = item.quantity;
             newPhanTu.price = item.price;
             newPhanTu.tongtientruocthue = item.price * item.quantity;
             newPhanTu.tongtienthue = item.quantity * item.price + item.quantity * item.tax;
-            newDongDonHang.push({...newPhanTu})
+            newDongDonHang.push({ ...newPhanTu })
             return newDongDonHang;
         })
         return newDongDonHang;
@@ -55,8 +54,10 @@ export function* dongDonHangHandle(cartItems){
 
 export function* checkOutHandle(props) {
     try {
-        const newDonHang = yield call(donHangHandle, props.payload);
-        const newDongDonHang = yield call(dongDonHangHandle, props.payload);
+        const { id, cartItems } = props.payload;
+        const newDonHang = yield call(donHangHandle, cartItems, id);
+        console.log(newDonHang)
+        const newDongDonHang = yield call(dongDonHangHandle, cartItems, id);
         yield put(onCheckOutSuccess(newDonHang, newDongDonHang));
     } catch (error) {
         yield put(onCheckOutFailed(error));

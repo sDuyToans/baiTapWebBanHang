@@ -6,6 +6,7 @@ export const addItem = (cartItems, productToAdd) => {
     const existingCartItem = cartItems.find(
       (item) => item.id === productToAdd.id
     );
+
     if (existingCartItem) {
       return cartItems.map((item) =>
         item.id === productToAdd.id
@@ -13,8 +14,8 @@ export const addItem = (cartItems, productToAdd) => {
           : item
       );
     }
-  
-    return [...cartItems, { ...productToAdd, quantity: 1 }];
+    const id = productToAdd.id
+    return [...cartItems, { id, quantity: 1 }];
   };
 
 export const addItemToCart = (cartItems, itemToAdd) => {
@@ -24,7 +25,7 @@ export const addItemToCart = (cartItems, itemToAdd) => {
 
 export const setIsCartOpen = boolean => createAction(CART_ACTION_TYPES.OPT_SELECT_IS_CART_OPEN, boolean);
 
-export const onCheckOutStart = (cartItems) => createAction(CART_ACTION_TYPES.UPDATE_ON_CHECHOUT_START, cartItems);
+export const onCheckOutStart = (cartItems, id) => createAction(CART_ACTION_TYPES.UPDATE_ON_CHECHOUT_START, { cartItems, id });
 
 export const onCheckOutSuccess = (newDonHang, newDongDonHang) => createAction(CART_ACTION_TYPES.UPDATE_ON_CHECHOUT_SUCCESS, { newDonHang, newDongDonHang}) ;
 

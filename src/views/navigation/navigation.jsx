@@ -32,10 +32,7 @@ const Navigation = () => {
                                 <NavLink className="nav-link" aria-current="page" to='/mycart'>Sản phẩm của tôi</NavLink>
                             </li>
                             <li className="nav-item">
-                                <NavLink className="nav-link" aria-current="page" to='/dondatao'>Đơn hàng đã tạo</NavLink>
-                            </li>
-                            <li className="nav-item">
-                                <NavLink className="nav-link" aria-current="page" to='/dongDonHangDonHang'>Chi tiết các đơn hàng</NavLink>
+                                <NavLink className="nav-link" aria-current="page" to='/donhang'>Đơn hàng đã tạo</NavLink>
                             </li>
                             <li className="nav-item">
                                 <NavLink className="nav-link text-danger" aria-current="page" to='/baocao'>Báo Cáo</NavLink>
@@ -52,3 +49,4 @@ const Navigation = () => {
 }
 
 export default Navigation;
+
