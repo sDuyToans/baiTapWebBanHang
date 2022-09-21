@@ -6,7 +6,7 @@ import { useSelector } from 'react-redux';
 import { selectIsCartOpen } from '../../model/cart/cart.selector';
 
 const Navigation = () => {
-    const isCartOpen = useSelector(selectIsCartOpen)
+    const isCartOpen = useSelector(selectIsCartOpen);
     return (
         <div className='navigation-container container'>
             <nav className="navbar navbar-expand-lg bg-light">
