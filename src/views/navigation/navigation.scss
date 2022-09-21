@@ -7,6 +7,17 @@
                     height: 60px;
                 }
             }
+            .collapse{
+                .navbar-nav{
+                    width: 100% !important;
+                    justify-content: space-around !important;
+                    .nav-item{
+                        .nav-link{
+
+                        }
+                    }
+                }
+            }
         }
     }
 }
